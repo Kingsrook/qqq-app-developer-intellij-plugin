@@ -1,0 +1,64 @@
+
+import java.util.ArrayList;
+import com.kingsrook.qqq.backend.core.exceptions.QException;
+import com.kingsrook.qqq.backend.core.logging.QLogger;
+import com.kingsrook.qqq.backend.core.model.actions.processes.ProcessSummaryLine;
+import com.kingsrook.qqq.backend.core.model.actions.processes.ProcessSummaryLineInterface;
+import com.kingsrook.qqq.backend.core.model.actions.processes.RunBackendStepInput;
+import com.kingsrook.qqq.backend.core.model.actions.processes.RunBackendStepOutput;
+import com.kingsrook.qqq.backend.core.model.actions.processes.Status;
+import com.kingsrook.qqq.backend.core.processes.implementations.etl.streamedwithfrontend.AbstractTransformStep;
+import com.kingsrook.qqq.backend.core.processes.implementations.general.StandardProcessSummaryLineProducer;
+
+
+/*******************************************************************************
+ ** ${HeaderComment}
+ *******************************************************************************/
+public class ${BaseName}TransformStep extends AbstractTransformStep
+{
+   private static final QLogger LOG = QLogger.getLogger(${BaseName}TransformStep.class);
+
+   private ProcessSummaryLine okToInsertLine = StandardProcessSummaryLineProducer.getOkToInsertLine();
+   private ProcessSummaryLine okToUpdateLine = StandardProcessSummaryLineProducer.getOkToUpdateLine();
+   private ProcessSummaryLine okToDeleteLine = StandardProcessSummaryLineProducer.getOkToDeleteLine();
+   private ProcessSummaryLine errorLine      = StandardProcessSummaryLineProducer.getErrorLine();
+   
+   private ProcessSummaryLine customStatusLine = new ProcessSummaryLine(Status.TODO)
+      .withMessageSuffix("TODO")
+      .withSingularFutureMessage("TODO")
+      .withPluralFutureMessage("TODO")
+      .withSingularPastMessage("TODO")
+      .withPluralPastMessage("TODO");
+
+
+
+   /*******************************************************************************
+    **
+    *******************************************************************************/
+   @Override
+   public ArrayList<ProcessSummaryLineInterface> getProcessSummary(RunBackendStepOutput runBackendStepOutput, boolean isForResultScreen)
+   {
+      ArrayList<ProcessSummaryLineInterface> rs = new ArrayList<>();
+      okToInsertLine.addSelfToListIfAnyCount(rs);
+      okToUpdateLine.addSelfToListIfAnyCount(rs);
+      okToDeleteLine.addSelfToListIfAnyCount(rs);
+      errorLine.addSelfToListIfAnyCount(rs);
+      customStatusLine.addSelfToListIfAnyCount(rs);
+      return (rs);
+   }
+
+
+
+   /*******************************************************************************
+    **
+    *******************************************************************************/
+   @Override
+   public void runOnePage(RunBackendStepInput runBackendStepInput, RunBackendStepOutput runBackendStepOutput) throws QException
+   {
+      for(QRecord record : runBackendStepInput.getRecords())
+      {
+
+      }
+   }
+
+}

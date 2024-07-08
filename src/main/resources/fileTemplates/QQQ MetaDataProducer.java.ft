@@ -1,0 +1,57 @@
+
+/*******************************************************************************
+ ** Meta Data Producer for ${ObjectName}
+ *******************************************************************************/
+public class ${ObjectName}MetaDataProducer extends MetaDataProducer<${QMetaDataType}>
+{
+   #if(${QMetaDataType} != "QTableMetaData")
+   public static final String NAME = "${ObjectName}";
+   #end
+
+   /*******************************************************************************
+    **
+    *******************************************************************************/
+   @Override
+   public ${QMetaDataType} produce(QInstance qInstance) throws QException
+   {
+      #if(${QMetaDataType} == "QTableMetaData")
+      QTableMetaData qTableMetaData = new QTableMetaData()
+         .withName(${ObjectName}.TABLE_NAME)
+         .withLabel(TODO)
+         .withIcon(new QIcon().withName(TODO))
+         .withRecordLabelFormat("%s")
+         .withRecordLabelFields(TODO)
+         .withBackendName(TODO)
+         .withPrimaryKeyField("id")
+         .withUniqueKey(TODO)
+         .withRecordSecurityLock(TODO)
+         .withAuditRules(new QAuditRules().withAuditLevel(AuditLevel.TODO))
+         .withFieldsFromEntity(${ObjectName}.class)
+         .withBackendDetails(new RDBMSTableBackendDetails()
+            .withTableName(TODO))
+         .withSection(new QFieldSection("identity", new QIcon().withName("badge"), Tier.T1, List.of("id")))
+         .withSection(new QFieldSection("data", new QIcon().withName("text_snippet"), Tier.T2, List.of(dataFieldNames)))
+         .withSection(new QFieldSection("dates", new QIcon().withName("calendar_month"), Tier.T3, List.of("createDate", "modifyDate")));
+         
+      QInstanceEnricher.setInferredFieldBackendNames(qTableMetaData);
+         
+      return (qTableMetaData);
+      #elseif(${QMetaDataType} == "QPossibleValueSource")
+         // for a short-form enum:
+         // return (return (QPossibleValueSource.newForEnum(NAME, ${ObjectName}.values()));
+
+         // or, short-form table:
+         // return (QPossibleValueSource.newForTable(NAME));
+
+         // or, long form:
+         // return (new ${QMetaDataType}()
+         //    .withName(NAME)
+         // );
+      #else
+      return (new ${QMetaDataType}()
+         .withName(NAME)
+      );
+      #end
+   }
+
+}

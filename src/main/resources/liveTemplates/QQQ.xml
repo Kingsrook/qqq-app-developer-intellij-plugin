@@ -1,0 +1,165 @@
+<templateSet group="QQQ">
+  <template name="qquery-long" value="QueryInput queryInput = new QueryInput();&#10;queryInput.setTableName($TABLE$);&#10;queryInput.setFilter(new QQueryFilter(new QFilterCriteria($END$)));&#10;QueryOutput queryOutput = new QueryAction().execute(queryInput);&#10;" description="longest version of execute a QQQ QueryAction" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qinsert-long" value="InsertInput insertInput = new InsertInput();&#10;insertInput.setTableName($TABLE$);&#10;insertInput.setRecords($END$);&#10;InsertOutput insertOutput = new InsertAction().execute(insertInput);&#10;" description="Write code to execute a QQQ Insert Action" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qupdate-long" value="UpdateInput updateInput = new UpdateInput();&#10;updateInput.setTableName($TABLE$);&#10;updateInput.setRecords($END$);&#10;UpdateOutput updateOutput = new UpdateAction().execute(updateInput);&#10;" description="Write code to execute a QQQ Update Action" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qget-long" value="GetInput getInput = new GetInput();&#10;getInput.setTableName($TABLE$);&#10;getInput.setPrimaryKey($END$);&#10;GetOutput getOutput = new GetAction().execute(getInput);&#10;" description="longest version to execute a QQQ GetAction" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="declog" value="private static final QLogger LOG = QLogger.getLogger($THIS_CLASS$.class);" description="Declare a logger object (LOG) for a class without one" toReformat="false" toShortenFQNames="true">
+    <variable name="THIS_CLASS" expression="className()" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="qdelete-long" value="DeleteInput deleteInput = new DeleteInput();&#10;deleteInput.setTableName($TABLE$);&#10;deleteInput.set$END$&#10;DeleteOutput deleteOutput = new DeleteAction().execute(deleteInput);&#10;" description="Write code to execute a QQQ Delete Action" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qcount-long" value="CountInput countInput = new CountInput();&#10;countInput.setTableName($TABLE$);&#10;countInput.setFilter($END$);&#10;CountOutput countOutput = new CountAction().execute(countInput);&#10;" description="Write code to execute a QQQ CountAction" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qaggregate-long" value="AggregateInput aggregateInput = new AggregateInput();&#10;aggregateInput.setTableName($TABLE$);&#10;aggregateInput.setFilter($END$);&#10;AggregateOutput aggregateOutput = new AggregateAction().execute(aggregateInput);&#10;" description="Write code to execute a QQQ AggregateAction" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="processSummaryMethodBody" value="ArrayList&lt;ProcessSummaryLineInterface&gt; rs = new ArrayList&lt;&gt;();&#10;$VAR$.addSelfToListIfAnyCount(rs);&#10;return (rs);" description="write a process summary method body" toReformat="false" toShortenFQNames="true">
+    <variable name="VAR" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="processSummaryVariableDeclarations" value="private ProcessSummaryLine okLine = StandardProcessSummaryLineProducer.getOkToUpdateLine();&#10;&#10;private ProcessSummaryLine customLine = new ProcessSummaryLine(Status.ERROR)&#10;   .withMessageSuffix(&quot;&quot;)&#10;   .withSingularFutureMessage(&quot;&quot;)&#10;   .withPluralFutureMessage(&quot;&quot;)&#10;   .withSingularPastMessage(&quot;&quot;)&#10;   .withPluralPastMessage(&quot;&quot;);" description="standard style of process summary variable delcarations" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="newQPossibleValueSourceFromTable" value="new QPossibleValueSource()&#10;   .withName($TABLE_CLASS$.TABLE_NAME)&#10;   .withType(QPossibleValueSourceType.TABLE)&#10;   .withTableName($TABLE_CLASS$.TABLE_NAME)&#10;   .withValueFormatAndFields(PVSValueFormatAndFields.LABEL_ONLY);&#10;" description="write a new QPossibleValueSource from a table" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE_CLASS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qfield" value="@QField($ATTRIBUTES$)&#10;private $TYPE$ $NAME$;$END$" description="Write a new QField in a RecordEntity" toReformat="false" toShortenFQNames="true">
+    <variable name="TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ATTRIBUTES" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="newQJoinMetaData" value="new QJoinMetaData()&#10;   .withLeftTable($LEFT_TABLE$)&#10;   .withRightTable($RIGHT_TABLE$)&#10;   .withInferredName() // TODO or .withName(&quot;&quot;)&#10;   .withType(JoinType.$TYPE$)&#10;   .withJoinOn(new JoinOn(&quot;$LEFT_FIELD$&quot;, &quot;$RIGHT_FIELD$&quot;))" description="write a new QJoinMetaData" toReformat="false" toShortenFQNames="true">
+    <variable name="LEFT_TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="RIGHT_TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LEFT_FIELD" expression="&quot;id&quot;" defaultValue="id" alwaysStopAt="true" />
+    <variable name="RIGHT_FIELD" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qupdate-short" value="new UpdateAction().execute(new UpdateInput($TABLE$).with$END$);&#10;" description="shorter verison of QQQ Update action" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qinsert-short" value="new InsertAction().execute(new InsertInput($TABLE_NAME$).with$END$());&#10;" description="shorter verison of QQQ Insert action" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qget-medium" value="new GetAction().execute$EXECUTE_HOW$(new GetInput($TABLE_NAME$).with$END$())&#10;" description="medium verison of QQQ Get action" toReformat="false" toShortenFQNames="true">
+    <variable name="EXECUTE_HOW" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TABLE_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qquery-medium" value="new QueryAction().execute(new QueryInput($TABLE_NAME$).withFilter(new QQueryFilter(new QFilterCriteria($END$))))&#10;" description="medium verison of QQQ Query action" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qdelete-short" value="DeleteOutput deleteOutput = new DeleteAction().execute(new DeleteInput($TABLE$).with$END$);&#10;" description="shorter version of QQQ Delete Action" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="newQTableMetaData" value="      QTableMetaData qTableMetaData = new QTableMetaData()&#10;         .withName($NAME$)&#10;         .withLabel($LABEL$)&#10;         .withIcon(new QIcon().withName($ICON$))&#10;         .withRecordLabelFormat(&quot;%s&quot;)&#10;         .withRecordLabelFields($LABEL_FIELDS$)&#10;         .withBackendName($BE_NAME$)&#10;         .withPrimaryKeyField(&quot;$PKEY_FIELD$&quot;)&#10;         .withUniqueKey($UK$)&#10;         .withRecordSecurityLock($LOCK$)&#10;         .withPermissionRules($PERMISSION_RULE$)&#10;         .withAuditRules(new QAuditRules().withAuditLevel(AuditLevel.$AUDIT_LEVEL$))&#10;         .withFieldsFromEntity($ENTITY$.class)&#10;         .withBackendDetails(new RDBMSTableBackendDetails()&#10;            .withTableName($TABLE_NAME$))&#10;         .withSection(new QFieldSection(&quot;identity&quot;, new QIcon().withName(&quot;badge&quot;), Tier.T1, List.of(&quot;id&quot;)))&#10;         .withSection(new QFieldSection(&quot;data&quot;, new QIcon().withName(&quot;text_snippet&quot;), Tier.T2, List.of({dataFieldNames})))&#10;         .withSection(new QFieldSection(&quot;dates&quot;, new QIcon().withName(&quot;calendar_month&quot;), Tier.T3, List.of(&quot;createDate&quot;, &quot;modifyDate&quot;)));&#10;         &#10;      QInstanceEnricher.setInferredFieldBackendNames(qTableMetaData);&#10;" description="wirte a new QTableMetaData" toReformat="false" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LABEL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ICON" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LABEL_FIELDS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="BE_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PKEY_FIELD" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="UK" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LOCK" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PERMISSION_RULE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="AUDIT_LEVEL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="ENTITY" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TABLE_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name=".wv" value=".withValue(&quot;$FIELD$&quot;, $VALUE$)$END$" description="shortcut to add a .withValue(key, value) call to a QRecord" toReformat="false" toShortenFQNames="true">
+    <variable name="FIELD" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+    </context>
+  </template>
+  <template name="getById" value="/*******************************************************************************&#10; **&#10; *******************************************************************************/&#10;public static $CLASSNAME$ getById($ID_TYPE$ id)&#10;{&#10;   if(id == null)&#10;   {&#10;      return (null);&#10;   }&#10;&#10;   for($CLASSNAME$ value : $CLASSNAME$.values())&#10;   {&#10;      if(value.getId().equals(id))&#10;      {&#10;         return (value);&#10;      }&#10;   }&#10;&#10;   return null;&#10;}" description="write a 'getById' method for an enum" toReformat="false" toShortenFQNames="true">
+    <variable name="CLASSNAME" expression="className()" defaultValue="" alwaysStopAt="false" />
+    <variable name="ID_TYPE" expression="expectedType()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_DECLARATION" value="true" />
+    </context>
+  </template>
+  <template name="qget-short" value="GetAction.execute($TABLE_NAME$, $END$)&#10;      " description="shortest verison of QQQ Get action" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qquery-short" value="QueryAction.execute($TABLE_NAME$, $END$)&#10;" description="shortest verison of QQQ Query action" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+</templateSet>

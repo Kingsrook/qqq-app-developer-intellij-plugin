@@ -1,0 +1,37 @@
+
+
+
+/*******************************************************************************
+ ** QRecord Entity for ${NAME} table
+ *******************************************************************************/
+public class ${NAME} extends QRecordEntity
+{
+   public static final String TABLE_NAME = "${NAME}";
+
+   @QField(isEditable = false)
+   private Integer id;
+
+   @QField(isEditable = false)
+   private Instant createDate;
+
+   @QField(isEditable = false)
+   private Instant modifyDate;
+
+
+   /*******************************************************************************
+    ** Default constructor
+    *******************************************************************************/
+   public ${NAME}()
+   {
+   }
+
+
+   /*******************************************************************************
+    ** Constructor that takes a QRecord
+    *******************************************************************************/
+   public ${NAME}(QRecord record)
+   {
+      populateFromQRecord(record);
+   }
+
+}

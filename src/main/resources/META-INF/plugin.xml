@@ -1,0 +1,42 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin require-restart="false">
+   <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+   <id>com.kingsrook.qqq-app-developer-intellij-plugin</id>
+
+   <!-- Public plugin name should be written in Title Case.
+        Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+   <name>QQQ App Developer Tools</name>
+
+   <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+   <vendor email="contact@kingsrook.com" url="https://www.kingsrook.com">Kingsrook</vendor>
+
+   <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+        Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+        Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+   <description><![CDATA[
+    A Plugin with tools for Developers of QQQ Applications, including:
+    <ul>
+      <li><b>File Templates</b> - to create commonly-used files in a QQQ application, such as Record Entities,
+       Meta Data Producers, Possible Value Enums, and Liquibase changesets.</li>
+      <li><b>Live Templates</b> - to write common code in a QQQ app, mostly shortcuts for the various ORM interactions
+      (QQuery, QInsert, QUpdate, etc), but also liquibase changesets and commonly used SQL in liquibase.</li>
+    </ul>
+  ]]></description>
+
+   <change-notes>
+      This is the first version of this plugin, so, everything's new!
+   </change-notes>
+
+   <!-- Product and plugin compatibility requirements.
+        Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+   <depends>com.intellij.modules.platform</depends>
+
+   <!-- Extension points defined by the plugin.
+        Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+   <extensions defaultExtensionNs="com.intellij">
+
+      <defaultLiveTemplates file="/liveTemplates/QQQ.xml"/>
+      <defaultLiveTemplates file="/liveTemplates/Liquibase-sql.xml"/>
+
+   </extensions>
+</idea-plugin>

@@ -1,0 +1,33 @@
+
+import java.util.ArrayList;
+import com.kingsrook.qqq.backend.core.exceptions.QException;
+import com.kingsrook.qqq.backend.core.logging.QLogger;
+import com.kingsrook.qqq.backend.core.model.actions.processes.ProcessSummaryLine;
+import com.kingsrook.qqq.backend.core.model.actions.processes.ProcessSummaryLineInterface;
+import com.kingsrook.qqq.backend.core.model.actions.processes.RunBackendStepInput;
+import com.kingsrook.qqq.backend.core.model.actions.processes.RunBackendStepOutput;
+import com.kingsrook.qqq.backend.core.model.actions.processes.Status;
+import com.kingsrook.qqq.backend.core.processes.implementations.etl.streamedwithfrontend.AbstractLoadStep;
+import com.kingsrook.qqq.backend.core.processes.implementations.general.StandardProcessSummaryLineProducer;
+
+
+/*******************************************************************************
+ ** ${HeaderComment}
+ *******************************************************************************/
+public class ${BaseName}LoadStep extends AbstractLoadStep
+{
+   private static final QLogger LOG = QLogger.getLogger(${BaseName}LoadStep.class);
+
+   /*******************************************************************************
+    **
+    *******************************************************************************/
+   @Override
+   public void runOnePage(RunBackendStepInput runBackendStepInput, RunBackendStepOutput runBackendStepOutput) throws QException
+   {
+      for(QRecord record : runBackendStepInput.getRecords())
+      {
+
+      }
+   }
+
+}

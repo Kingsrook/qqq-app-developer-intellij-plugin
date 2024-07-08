@@ -1,0 +1,95 @@
+<templateSet group="Kingsrook Liquibase and SQL">
+  <template name="alterAddColumn" value="ALTER TABLE $TABLE$ ADD $COLUMN$ $TYPE$;" description="Write an ALTER TABLE SQL statement to add a column" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="COLUMN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TYPE" expression="enum(&quot;INTEGER&quot;,&quot;VARCHAR(250)&quot;,&quot;BOOLEAN&quot;,&quot;DECIMAL(12,2)&quot;,&quot;DATE&quot;,&quot;TIMESTAMP&quot;)" defaultValue="INTEGER" alwaysStopAt="true" />
+    <context>
+      <option name="SQL" value="true" />
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+  <template name="alterAddIndex" value="ALTER TABLE $TABLE$ ADD INDEX $INDEX_NAME$ ($COLUMNS$);" description="Write an ALTER TABLE SQL statement to add an index" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="COLUMNS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="INDEX_NAME" expression="concat(&quot;i_&quot;, regularExpression(regularExpression(COLUMNS, &quot;,&quot;, &quot;_&quot;), &quot; &quot;, &quot;&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="SQL" value="true" />
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+  <template name="changeSetSQL" value="&lt;changeSet author=&quot;$USER$&quot; id=&quot;$STORY$-$INDEX$&quot;&gt;&#10;   &lt;sql&gt;&#10;      $END$&#10;   &lt;/sql&gt;&#10;&lt;/changeSet&gt;" description="Write a Liquibase SQL changeset" toReformat="false" toShortenFQNames="true">
+    <variable name="USER" expression="user()" defaultValue="" alwaysStopAt="true" />
+    <variable name="STORY" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <variable name="INDEX" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+  <template name="changeSetCreateTable" value="&lt;changeSet author=&quot;$USER$&quot; id=&quot;$STORY$-$INDEX$&quot;&gt;&#10;   &lt;createTable tableName=&quot;$TABLE$&quot;&gt;&#10;      &lt;column autoIncrement=&quot;true&quot; name=&quot;id&quot; type=&quot;INTEGER&quot;&gt;&#10;         &lt;constraints nullable=&quot;false&quot; primaryKey=&quot;true&quot; primaryKeyName=&quot;$TABLE$_pkey&quot;/&gt;&#10;      &lt;/column&gt;&#10;&#10;      &lt;column defaultValueComputed=&quot;CURRENT_TIMESTAMP&quot; name=&quot;create_date&quot; type=&quot;TIMESTAMP&quot;/&gt;&#10;      &lt;column defaultValueComputed=&quot;CURRENT_TIMESTAMP&quot; name=&quot;modify_date&quot; type=&quot;TIMESTAMP&quot;/&gt;&#10;&#10;      &lt;column name=&quot;$END$&quot; type=&quot;&quot;/&gt;&#10;   &lt;/createTable&gt;&#10;&lt;/changeSet&gt;" description="Write a Liquibase createTable changeset" toReformat="false" toShortenFQNames="true">
+    <variable name="USER" expression="user()" defaultValue="" alwaysStopAt="true" />
+    <variable name="STORY" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <variable name="INDEX" expression="" defaultValue="&quot;1&quot;" alwaysStopAt="true" />
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+  <template name="changeSetLoadData" value="&lt;changeSet author=&quot;$USER$&quot; id=&quot;$STORY$-$INDEX$&quot;&gt;&#10;   &lt;loadData file=&quot;src/main/resources/liquibase/data/$TABLE$.csv&quot; tableName=&quot;$TABLE$&quot; /&gt;&#10;&lt;/changeSet&gt;" description="Write a Liquibase loadData changeset" toReformat="false" toShortenFQNames="true">
+    <variable name="USER" expression="user()" defaultValue="" alwaysStopAt="true" />
+    <variable name="STORY" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <variable name="INDEX" expression="" defaultValue="&quot;1&quot;" alwaysStopAt="true" />
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+  <template name="changeSetCreateTableAndLoadData" value="&lt;changeSet author=&quot;$USER$&quot; id=&quot;$STORY$-$INDEX$&quot;&gt;&#10;   &lt;createTable tableName=&quot;$TABLE$&quot;&gt;&#10;      &lt;column autoIncrement=&quot;true&quot; name=&quot;id&quot; type=&quot;INTEGER&quot;&gt;&#10;         &lt;constraints nullable=&quot;false&quot; primaryKey=&quot;true&quot; primaryKeyName=&quot;$TABLE$_pkey&quot;/&gt;&#10;      &lt;/column&gt;&#10;&#10;      &lt;column defaultValueComputed=&quot;CURRENT_TIMESTAMP&quot; name=&quot;create_date&quot; type=&quot;TIMESTAMP&quot;/&gt;&#10;      &lt;column defaultValueComputed=&quot;CURRENT_TIMESTAMP&quot; name=&quot;modify_date&quot; type=&quot;TIMESTAMP&quot;/&gt;&#10;&#10;      &lt;column name=&quot;$END$&quot; type=&quot;&quot;/&gt;&#10;   &lt;/createTable&gt;&#10;&lt;/changeSet&gt;&#10;&#10;&lt;changeSet author=&quot;$USER$&quot; id=&quot;$STORY$-$NEXT_INDEX$&quot;&gt;&#10;   &lt;loadData file=&quot;src/main/resources/liquibase/data/$TABLE$.csv&quot; tableName=&quot;$TABLE$&quot; /&gt;&#10;&lt;/changeSet&gt;" description="Write 2 Liquibase changesets, to create a table and load its data" toReformat="false" toShortenFQNames="true">
+    <variable name="USER" expression="user()" defaultValue="" alwaysStopAt="true" />
+    <variable name="STORY" expression="fileNameWithoutExtension()" defaultValue="" alwaysStopAt="true" />
+    <variable name="INDEX" expression="" defaultValue="&quot;1&quot;" alwaysStopAt="true" />
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="NEXT_INDEX" expression="groovyScript(&quot;try { return(Integer.parseInt(_1) + 1) } catch(Exception e) { return ''; }&quot;, INDEX)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+  <template name="createTable" value="CREATE TABLE $TABLE$&#10;(&#10;   id INTEGER AUTO_INCREMENT PRIMARY KEY,&#10;   create_date TIMESTAMP DEFAULT now(),&#10;   modify_date TIMESTAMP DEFAULT now(),&#10;   $END$&#10;);&#10;" description="Write an SQL Create TABLE statement" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="SQL" value="true" />
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+  <template name="alterAddUnique" value="ALTER TABLE $TABLE$ ADD UNIQUE $INDEX_NAME$ ($COLUMNS$);&#10;" description="Write an ALTER TABLE SQL statement to add a unique index" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="COLUMNS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="INDEX_NAME" expression="concat(&quot;u_&quot;, regularExpression(regularExpression(COLUMNS, &quot;,&quot;, &quot;_&quot;), &quot; &quot;, &quot;&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="SQL" value="true" />
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+  <template name="beginRollbackCommit" value="BEGIN WORK;&#10;&#10;$END$&#10;&#10;ROLLBACK WORK;&#10;&#10;COMMIT WORK;&#10;" description="Write BEGIN WORK; ROLLBACK WORK; COMMIT WORK; statements" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="SQL" value="true" />
+    </context>
+  </template>
+  <template name="alterChangeColumn" value="ALTER TABLE $TABLE$ CHANGE $FROM$ $TO$ $TYPE$;" description="Write an ALTER TABLE SQL statement to change a column" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FROM" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TO" expression="" defaultValue="FROM" alwaysStopAt="true" />
+    <variable name="TYPE" expression="enum(&quot;INTEGER&quot;,&quot;VARCHAR(250)&quot;,&quot;BOOLEAN&quot;,&quot;DECIMAL(12,2)&quot;,&quot;DATE&quot;,&quot;TIMESTAMP&quot;)" defaultValue="INTEGER" alwaysStopAt="true" />
+    <context>
+      <option name="SQL" value="true" />
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+  <template name="insert-scheduled-job-process" value="INSERT INTO scheduled_job (label, scheduler_name, cron_expression, cron_time_zone_id, repeat_seconds, type, is_active) VALUES&#10;('$PROCESS_NAME$', 'QuartzScheduler', null, null, $REPEAT_SECONDS$, 'PROCESS', 1);&#10;&#10;INSERT INTO scheduled_job_parameter (scheduled_job_id, `key`, value) VALUES&#10;((SELECT id FROM scheduled_job WHERE label = '$PROCESS_NAME$'), 'processName', '$PROCESS_NAME$');&#10;" description="write an insert statement for a scheduled job for a process" toReformat="false" toShortenFQNames="true">
+    <variable name="PROCESS_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="REPEAT_SECONDS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="SQL" value="true" />
+      <option name="XML_TEXT" value="true" />
+    </context>
+  </template>
+</templateSet>
