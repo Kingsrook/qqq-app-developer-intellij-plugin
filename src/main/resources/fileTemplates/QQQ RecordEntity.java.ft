@@ -6,7 +6,7 @@
  *******************************************************************************/
 public class ${NAME} extends QRecordEntity
 {
-   public static final String TABLE_NAME = "${NAME}";
+   public static final String TABLE_NAME = "${NAME.substring(0, 1).toLowerCase()}${NAME.substring(1)}";
 
    @QField(isEditable = false)
    private Integer id;
@@ -16,6 +16,7 @@ public class ${NAME} extends QRecordEntity
 
    @QField(isEditable = false)
    private Instant modifyDate;
+
 
 
    /*******************************************************************************

@@ -1,4 +1,4 @@
-<templateSet group="Kingsrook Liquibase and SQL">
+<templateSet group="QQQ App Developer - Liquibase and SQL">
   <template name="alterAddColumn" value="ALTER TABLE $TABLE$ ADD $COLUMN$ $TYPE$;" description="Write an ALTER TABLE SQL statement to add a column" toReformat="false" toShortenFQNames="true">
     <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="COLUMN" expression="" defaultValue="" alwaysStopAt="true" />

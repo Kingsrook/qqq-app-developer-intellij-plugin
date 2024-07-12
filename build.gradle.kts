@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.kingsrook"
-version = "1.0.2-SNAPSHOT"
+version = "1.1.0"
 
 repositories {
   mavenCentral()

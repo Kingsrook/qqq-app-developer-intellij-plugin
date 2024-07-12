@@ -1,4 +1,4 @@
-<templateSet group="QQQ">
+<templateSet group="QQQ App Developer - Java">
   <template name="qquery-long" value="QueryInput queryInput = new QueryInput();&#10;queryInput.setTableName($TABLE$);&#10;queryInput.setFilter(new QQueryFilter(new QFilterCriteria($END$)));&#10;QueryOutput queryOutput = new QueryAction().execute(queryInput);&#10;" description="longest version of execute a QQQ QueryAction" toReformat="false" toShortenFQNames="true">
     <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
@@ -157,6 +157,35 @@
   </template>
   <template name="qquery-short" value="QueryAction.execute($TABLE_NAME$, $END$)&#10;" description="shortest verison of QQQ Query action" toReformat="false" toShortenFQNames="true">
     <variable name="TABLE_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name=".wv" value=".withValue(&quot;$FIELD$&quot;, $VALUE$)$END$" description="" toReformat="false" toShortenFQNames="true">
+    <variable name="FIELD" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context />
+  </template>
+  <template name="newStreamedETLWithFrontendProcess" value="QProcessMetaData process = StreamedETLWithFrontendProcess.processMetaDataBuilder()&#10;   .withName(NAME)&#10;   .withIcon(new QIcon().withName(&quot;todo&quot;))&#10;   .withTableName($TABLE_NAME$)&#10;   .withSourceTable($TABLE_NAME$)&#10;   .withDestinationTable($DESTINATION_TABLE_NAME$)&#10;   .withExtractStepClass(ExtractViaQueryStep.class)&#10;   .withTransformStepClass($NAME$TransformStep.class)&#10;   .withLoadStepClass($NAME$LoadStep.class)&#10;   .withReviewStepRecordFields(List.of(&#10;      new QFieldMetaData(&quot;$FIELD$&quot;, QFieldType.INTEGER)&#10;   ))&#10;   .getProcessMetaData();&#10;" description="write meta-data for a new StreamedETLWithFrontendProcess" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DESTINATION_TABLE_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FIELD" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qrunprocess" value="RunProcessInput input = new RunProcessInput();&#10;input.setProcessName($PROCESS_NAME$);&#10;input.setCallback(QProcessCallbackFactory.$CALLBACK$);&#10;input.setFrontendStepBehavior(RunProcessInput.FrontendStepBehavior.$BEHAVIOR$);&#10;RunProcessOutput runProcessOutput = new RunProcessAction().execute(input);&#10;" description="write code to run a qqq process" toReformat="false" toShortenFQNames="true">
+    <variable name="PROCESS_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CALLBACK" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="BEHAVIOR" expression="" defaultValue="SKIP" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="qcount-short" value="new CountAction().execute(new CountInput($TABLE$).withFilter($END$)).getCount()&#10;" description="shortest version of code to execute a QQQ CountAction" toReformat="false" toShortenFQNames="true">
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="JAVA_EXPRESSION" value="true" />
       <option name="JAVA_STATEMENT" value="true" />
